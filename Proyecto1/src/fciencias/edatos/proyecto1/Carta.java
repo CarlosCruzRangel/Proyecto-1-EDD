@@ -7,6 +7,50 @@ package fciencias.edatos.proyecto1;
 * @since Estructuras de datos 2022-1. Proyecto 1
 */
 
-public class Carta {
+/**
+ * ---------------------------------------------------------------------
+ * Clase Carta para juego Solterona 
+ * ---------------------------------------------------------------------
+ */
 
+public class Carta {
+	private String palo;
+	private int valorDeCara;
+
+	/**
+  * ---------------------------------------------------------------------
+  * Metodo Getter para cambiar valores de Palo y el valor de la cara
+  * ---------------------------------------------------------------------
+  */
+ 
+	public String getPalo() {
+		return palo;
+	}
+
+	public int getValorDeCara() {
+		return valor;
+	}
+
+
+ 
+ /**
+  * ---------------------------------------------------------------------
+  * Metodo Setter para obtener valores de Palo y el valor de la cara
+  * ---------------------------------------------------------------------
+  */
+ 
+
+	public void setPalo(String s) {
+		palo = p;
+	}
+
+	public void setValorDeCara(int v) {
+		valor = v;
+	}
+
+
+	public Card(){
+		palo = null;
+		valor = -1;
+	}
 }

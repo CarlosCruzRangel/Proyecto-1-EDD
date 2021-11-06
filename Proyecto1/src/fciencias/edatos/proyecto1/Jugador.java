@@ -7,6 +7,12 @@ package fciencias.edatos.proyecto1;
 * @since Estructuras de datos 2022-1. Proyecto 1
 */
 
+/**
+ * ---------------------------------------------------------------------
+ * Clase Jugador para el juego Solterona
+ * ---------------------------------------------------------------------
+ */
+
 public class Jugador {
 
 }

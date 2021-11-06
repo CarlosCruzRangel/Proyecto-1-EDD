@@ -7,6 +7,14 @@ package fciencias.edatos.proyecto1;
 * @since Estructuras de datos 2022-1. Proyecto 1
 */
 
+/**
+ * ---------------------------------------------------------------------
+ * Clase OldMaid para juego Solterona 
+ * ---------------------------------------------------------------------
+ */
+
 public class OldMaid {
+	public int numeroDeJugadores;
+	public boolean juegoTerminado;
 
 }

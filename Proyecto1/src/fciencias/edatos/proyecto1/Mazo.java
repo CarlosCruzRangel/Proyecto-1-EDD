@@ -7,6 +7,19 @@ package fciencias.edatos.proyecto1;
 * @since Estructuras de datos 2022-1. Proyecto 1
 */
 
+/**
+ * ---------------------------------------------------------------------
+ * Clase Mazo para el juego Solterona
+ * ---------------------------------------------------------------------
+ */
+
 public class Mazo {
 
+	int size;
+	int excluciones;
+	boolean mazo;
+
+	public Mazo() {
+
+	}
 }

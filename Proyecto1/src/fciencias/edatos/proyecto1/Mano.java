@@ -7,6 +7,12 @@ package fciencias.edatos.proyecto1;
 * @since Estructuras de datos 2022-1. Proyecto 1
 */
 
+/**
+ * ---------------------------------------------------------------------
+ * Clase Mano para juego Solterona 
+ * ---------------------------------------------------------------------
+ */
+
 public class Mano {
 
 }

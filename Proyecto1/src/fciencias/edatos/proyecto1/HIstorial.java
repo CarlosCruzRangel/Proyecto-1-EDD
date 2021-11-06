@@ -9,29 +9,8 @@ package fciencias.edatos.proyecto1;
 
 /**
  * ---------------------------------------------------------------------
- * Clase Jugador para el juego Solterona
+ * Clase Historial para el juego Solterona
  * ---------------------------------------------------------------------
  */
 
-public class Jugador {
-	public String nombreJugador
-	
-	public void setNombreJugador(String s) {
-		this.nombreJugador = nombreJugador;
-	}
-
-	public int getNombreJugador() {
-		return nombreJugador;
-	}
-
-	public TomaCarta (){
-
-	}
-
-	public EsPar(){
-
-	}
-
-
-
-}
+public class Historial {

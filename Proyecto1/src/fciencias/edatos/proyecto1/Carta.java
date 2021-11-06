@@ -41,11 +41,11 @@ public class Carta {
  
 
 	public void setPalo(String s) {
-		palo = p;
+		this.palo = p;
 	}
 
 	public void setValorDeCara(int v) {
-		valor = v;
+		this.valor = v;
 	}
 
 

@@ -14,8 +14,12 @@ package fciencias.edatos.proyecto1;
  */
 
 public class Jugador {
-	public String nombreJugador
+
+	public String nombreJugador;
+	public boolean esGanador;
 	
+
+
 	public void setNombreJugador(String s) {
 		this.nombreJugador = nombreJugador;
 	}

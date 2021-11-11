@@ -6,7 +6,7 @@ public class IA extends Jugador {
     private Random rand;
 
     public IA(String nombre) {
-        this.identificador = nombre;
+        this.nombre = nombre;
         this.rand = new Random();
     }
 

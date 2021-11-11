@@ -88,13 +88,13 @@ public class DoubleLinkedList<T> implements TDAList<T> {
             return null;
         T guardado = this.primero.elemento;
         //Caso lista de un único elemento. Se vacía la lista.
-        if (this.length == 1) {
+        if (this.size() == 1) {
             this.clear();
             return guardado;
-        } else {
-            primero = primero.siguiente;
-            primero.anterior = null;
-        }
+        } 
+        
+        primero = primero.siguiente;
+        primero.anterior = null;
 
         length--;
         return guardado;
@@ -110,10 +110,9 @@ public class DoubleLinkedList<T> implements TDAList<T> {
         if (this.length == 1) {
             this.clear();
             return guardado;
-        } else {
-            ultimo = ultimo.anterior;
-            ultimo.siguiente = null;
         }
+        ultimo = ultimo.anterior;
+        ultimo.siguiente = null;
 
         length--;
         return guardado;
@@ -162,29 +161,33 @@ public class DoubleLinkedList<T> implements TDAList<T> {
 
     @Override
     public int size() {
-        return this.length;
+        Iterator<T> iterador = this.listIterador();
+        int tamaño = 0;
+        while (iterador.hasNext()) {
+            iterador.next();
+            tamaño++;
+        }
+        return tamaño;
     }
 
     @Override
     public T remove(int i) throws IndexOutOfBoundsException {
-        if (length <= i || i < 0) throw new IndexOutOfBoundsException();
+        if(i < 0 || this.length <= i)
+            throw new IndexOutOfBoundsException();
+        
+        T elemento;
+        if(i == 0) return this.pop();
+        else {
+            Nodo aux = primero;
+            for(int j = 0; j < i-1; j++){
+                aux = aux.siguiente;
+            }
+            elemento = aux.siguiente.elemento;
+            aux.siguiente = aux.siguiente.siguiente;
 
-        System.out.println(i);
-
-        //Casos donde trabajamos con los extremos de la lista.
-        if (i == 0) return this.pop();
-        if (i == this.length-1) return this.pop_back();
-
-        Nodo apuntador = this.primero;
-
-        for (int j = 0; j < i; j++) {
-            apuntador = apuntador.siguiente;
         }
-
-        apuntador.anterior.siguiente = apuntador.siguiente;
-        apuntador.siguiente.anterior = apuntador.anterior;
-
-        return apuntador.elemento;
+        this.length--;
+        return elemento;
     }
 
     @Override
@@ -194,36 +197,19 @@ public class DoubleLinkedList<T> implements TDAList<T> {
 
     @Override
     public T get(int i) throws IndexOutOfBoundsException {
-        if (length <= i || i < 0) throw new IndexOutOfBoundsException();
-
-        int medio = this.length / 2;
-        Nodo apuntador;
-
-        if (i < medio) {
-            apuntador = this.primero;
-            while (i-- > 0) 
-                apuntador = apuntador.siguiente;
-        } else {
-            apuntador = this.ultimo;
-            while (i-- > 0) 
-                apuntador = apuntador.anterior;
-            
-        }
-        return apuntador.elemento;
-        /*
-        if (i == 0) return this.primero.elemento;
-        if (i == this.length - 1) return this.ultimo.elemento;
-        int delta = length - i;
-        //usamos la delta anterior para encontrar que extremo de la lista está más cerca del índice.
-        if (i < delta) { //en este caso i está más cerca de la cabeza de la lista.
+        if( i < 0 || i > this.length){
+            throw new IndexOutOfBoundsException();
+        } else if(isEmpty()) {
+            return null;
+        } else if(i == 0) {
+            return primero.elemento;
+        }else{
             Nodo apuntador = this.primero;
-            for (int j = 0; j < i; j++) apuntador = apuntador.siguiente;
-            return apuntador.elemento;
-        } else { //en este caso i está más cerca de la cola de la lista.
-            Nodo apuntador = this.ultimo;
-            for (int j = 0; j < i; j++) apuntador = apuntador.anterior;
-            return apuntador.elemento;
-        } */
+            for(int j = 0; j < i; j++){
+                apuntador = apuntador.siguiente;
+            }
+            return (T) apuntador.elemento;
+        }
     }
 
     @Override
@@ -283,6 +269,7 @@ public class DoubleLinkedList<T> implements TDAList<T> {
             nuevo.anterior.siguiente = nuevo;
             apuntador.anterior = nuevo;
         }
+        this.length++;
     }
 
     /**

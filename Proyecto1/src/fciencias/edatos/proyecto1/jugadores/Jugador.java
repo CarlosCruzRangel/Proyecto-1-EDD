@@ -3,6 +3,7 @@ package fciencias.edatos.proyecto1.jugadores;
 import java.util.Iterator;
 
 import fciencias.edatos.proyecto1.Carta;
+import fciencias.edatos.proyecto1.OldMaid;
 import fciencias.edatos.proyecto1.colecciones.DoubleLinkedList;
 
 /**
@@ -22,7 +23,7 @@ import fciencias.edatos.proyecto1.colecciones.DoubleLinkedList;
 public abstract class Jugador {
 
 	protected DoubleLinkedList<Carta> mazo = new DoubleLinkedList<Carta>();
-	protected String identificador = "";
+	protected String nombre = "";
 
 	/**
 	 * Intercambia dos cartas del mazo del jugador.
@@ -39,7 +40,7 @@ public abstract class Jugador {
 	}
 
 	public String getNombre() {
-		return this.identificador;
+		return this.nombre;
 	}
 
 	/**
@@ -52,12 +53,9 @@ public abstract class Jugador {
 		while (iterador.hasNext()) {
 			Carta actual = iterador.next();
 			if (actual.getValor() == c.getValor()) {
-				System.out.println(identificador + " elimina un par de " + c.getValor());
-				if (actual.getValor() != mazo.get(indice).getValor()) {
-					System.out.println(mazo);
-					System.out.println(mazo.get(indice));
-					System.out.println(actual);
-				}
+				String suceso = nombre + " elimina un par de " + c.getValor();
+				System.out.println(suceso);
+				OldMaid.historial.push(suceso); //Mete al historial el suceso de se queda sin cartas el jugador.
 				removerCarta(indice);
 				return;
 			}
@@ -67,8 +65,22 @@ public abstract class Jugador {
 	}
 
 	public Carta removerCarta(int indice) {
-		return mazo.remove(indice);
+		Carta c = mazo.remove(indice);
+
+		if (mazo.isEmpty()) {
+			OldMaid.cartaVaciado(this);
+		}
+		
+		return c;
 	}
+
+	public String cartas() {
+        Iterator<Carta> iterador = this.mazo.listIterador();
+		String returnable = "";
+        while (iterador.hasNext()) 
+            returnable += "    " + iterador.next() + "\n";
+        return returnable;
+    }
 
 	/**
 	 * Se manda a llamar en el turno del jugador.
@@ -76,7 +88,5 @@ public abstract class Jugador {
 	 * @return indice de la carta que decidió robar, concluyendo el turno.
 	 */
 	public abstract int update(int otro);
-
-
 
 }
